@@ -1,0 +1,78 @@
+【备忘录】
+1 lambda存在意义就是对简单函数的简洁表示
+  callback = lambda e: print("intr")
+2 设置notepad++编辑python
+  1）将4个空格代替制表符 -设置-首选项-语言
+  2）自动缩进 -设置-首选项-其他
+3 Tab键可补全，'ma'补全为'machine'
+4 粘贴模式（paste mode）; Ctrl-C to cancel, Ctrl-D to finish
+5 PC--->ESP发送文件
+  >>> python webrepl_cli.py -p h1234 pc2esp_test.txt 192.168.0.106:/pc2esp_test.txt
+6 问题，在putty或TeraTerm连接开始时，repl窗口出现很多乱码。
+  法1：连接三次后正常。
+  法2：板上电后，延时5秒以上时间后，再打开putty或TeraTerm.  
+  
+【技巧】
+9 以字典形式表示变量。
+  up_temp1="{\"sensorDatas\":[{\"switcher\":0}]}"
+8 print多个变量。
+  print("Connected to %s, publish %s topic" % (server, TOPIC))
+7 端口设置，指定上拉。
+  pin = machine.Pin(0, machine.Pin.IN, machine.Pin.PULL_UP)
+6 Node.js REPL(Read Eval Print Loop:交互式解释器) 
+5 esptool.py可实现命令行烧录工作，便于批量完成
+   进入下载固件的目录，烧录命令：
+   python c:\Python27\Scripts\esptool.py --port /COM4 --baud 460800 write_flash --flash_size=detect 0 esp8266-20170108-v1.8.7.bin
+4 python库文件地址
+   https://github.com/micropython/micropython-lib
+1、对于简单的函数，也存在一种简便的表示方式，即：lambda表达式
+   # ###################### 普通函数 ######################
+   # 定义函数（普通方式）
+   def func(arg):
+       return arg + 1
+   # 执行函数
+   result = func(123)
+   # ###################### lambda ######################
+   # 定义函数（lambda表达式）
+   my_lambda = lambda arg : arg + 1
+   # 执行函数
+   result = my_lambda(123)
+
+2、uPython示例
+  1）from machine import Pin
+  # create an I/O pin in output mode
+  p = Pin('X1', Pin.OUT)
+  
+  # toggle the pin
+  p.high()
+  p.low()
+  
+  
+  2）import os
+  # list root directory
+  print(os.listdir('/'))
+  
+  # print current directory
+  print(os.getcwd())
+  
+  # open and read a file from the SD card
+  with open('/sd/readme.txt') as f:
+      print(f.read())
+  	
+  3）import machine
+  # set CPU frequency to 84MHz
+  machine.freq(84000000)
+  
+  4）import time
+  while 1:
+   print('sccuess good!')
+   time.sleep(1)
+   print('sccuess yes!')
+   time.sleep(1)
+  5）修改wifi信息
+   >>> ap_if = network.WLAN(network.AP_IF)
+   >>> ap_if.config(essid="micropython-xxx", authmode=network.AUTH_WPA_WPA2_PSK, password="micropythoN")   
+3 截取2位小数，四舍五入
+   number =1.2345
+   print('Distance:%0.2f cm' %number)
+	
