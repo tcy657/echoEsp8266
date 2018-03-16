@@ -34,26 +34,26 @@ def readFile(fileNameStr):
 #for check distance
 #return ok-number, bad-0
 def checkDist(pinTrig, pinEcho):
-  try:
-    import time
-    from machine import Pin
-    Trig, Echo = Pin(pinTrig, Pin.OUT), Pin(pinEcho, Pin.IN)
-    Trig.value(0)
-    Echo.value（0）
-    Trig.value(1)
-    time.sleep(0.00001)
-    Trig.value（0）
-    while(Echo.value()==0)
-        pass
-    t1 = time.ticks_us()
-    while(Echo.value()==1)
-        pass
-    t2 = time.ticks_us()
-    t3 = time.ticks_diff(t2, t1)/10000
-    return t3*340/2
-   except Exception:
-    print( "checkDist(), error!")
-    return 0
+    try:
+     import time
+     from machine import Pin
+     Trig, Echo = Pin(pinTrig, Pin.OUT), Pin(pinEcho, Pin.IN)
+     Trig.value(0)
+     Echo.value（0）
+     Trig.value(1)
+     time.sleep(0.00001)
+     Trig.value（0）
+     while(Echo.value()==0):
+         pass
+     t1 = time.ticks_us()
+     while(Echo.value()==1):
+         pass
+     t2 = time.ticks_us()
+     t3 = time.ticks_diff(t2, t1)/10000
+     return t3*340/2
+    except Exception:
+        print( "checkDist(), error!")
+        return 0
 
 #sum(l)/len(l), l=[1,2,3,4,5,6]
 def sum2len(binList):
@@ -75,13 +75,13 @@ def sum2len(binList):
 
 #set time and data
 def setTimeData(year = 2017, month = 8, day =23, week =1, hour =12, minute =48):
-  try:
-    import RTC
-    rtc = RTC()
-    rtc.datetime((year, month, day, week, hour, minute, 0, 0)) # set a specific date and time
-    rtc.datetime() # get date and time
-   except Exception:
-    print( "setTimeData(), error!")
+    try:
+        import RTC
+        rtc = RTC()
+        rtc.datetime((year, month, day, week, hour, minute, 0, 0)) # set a specific date and time
+        rtc.datetime() # get date and time
+    except Exception:
+        print( "setTimeData(), error!")
 
 def connectWifi(ssid,passwd):
   wlan=network.WLAN(network.STA_IF)
