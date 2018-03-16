@@ -2,6 +2,9 @@ from machine import Pin
 import time
 import echoLib
 
+pinTrig = 14
+pinEcho = 13
+
 SSID = ''
 PASSWORD = ''
 
@@ -12,6 +15,10 @@ password = ''
 topicName = b"your topic"
 message = ''
 
+threshold = 20 #cm
+lastValue = 0
+nowValue = 0
+
 def main_loop():
   try:
     echoLib.connectWifi(SSID,PASSWORD)  
@@ -19,8 +26,22 @@ def main_loop():
     if ( 0 != c.connect() ):
       print("connect error.")   
       return
+    
+    distance = []
     while 1:
-      c.publish(topicName, message, False) 
+      for i in range(1,6): #1-5
+          eachValue = echoLib.checkDist(pinTrig, pinEcho)
+          distance.append(eachValue)
+          time.sleep(0.5)
+      nowValue = echoLib.sum2len(distance)
+      compareValue = lastValue +threshold
+      if ( 0 == nowValue): #erro
+        message = 'error'
+      elif ( nowValue > compareValue): # empty
+        message = 'empty'
+      elif ( nowValue > compareValue):  
+         message = 'null'
+         c.publish(topicName, message, False) 
       time.sleep(1)
   except:
       pass

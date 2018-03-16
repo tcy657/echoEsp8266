@@ -11,8 +11,24 @@
 6 问题，在putty或TeraTerm连接开始时，repl窗口出现很多乱码。
   法1：连接三次后正常。
   法2：板上电后，延时5秒以上时间后，再打开putty或TeraTerm.  
+7 要想精度高，实行温度补偿。
   
-【技巧】
+【python技巧】
+18 Fabric 是一个 Python (2.5-2.7) 的库和命令行工具，用来提高基于 SSH 的应用部署和系统管理效率。
+17  virtualenv假定我们要开发一个新的项目，需要一套独立的Python运行环境
+16 StringIO和BytesIO是在内存中操作str和bytes的方法，使得和读写文件具有一致的接口。
+15 Python内置的“文档测试”（doctest）模块可以直接提取注释中的代码并执行测试。
+14 python偏函数 functools.partial的作用就是，把一个函数的某些参数给固定住（也就是设置默认值），返回一个新的函数
+13 python “装饰器”（Decorator）可在不改变原函数情况下，增强其功能
+12 python 按照约定俗成的管理，应该始终坚持使用4个空格的缩进
+11 git常用命令
+   查看状态：git status
+   最近提交的信息：显示你最近的提交信息
+10 github推送远程库
+   前提：推送远程库前，先建立仓库
+   1）要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
+   2）第一次推送master分支的所有内容     git push -u origin master
+   3）此后，每次本地提交后，就可以使用命令git push origin master推送最新修改；
 9 以字典形式表示变量。
   up_temp1="{\"sensorDatas\":[{\"switcher\":0}]}"
 8 print多个变量。
